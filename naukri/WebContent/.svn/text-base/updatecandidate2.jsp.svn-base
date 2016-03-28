@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.ArrayList" %>
+	<%@ page import="pack1.cnt.Candi" %>
+	<%@ page import="pack1.cnt.Data;" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Update Candidate</title>
+<script>
+</script>
+<link rel="stylesheet" type="text/css" href="external.css">
+</head>
+<body class="patter1">
+<%@ include file="protected.jsp" %>
+<table width=100% height=100%>
+<tr><td>
+<%@ include file="header.jsp" %>
+</td></tr><tr><td>
+<%@ include file="menu.jsp" %>
+</td></tr><tr><td>
+<table border="0" width=100% height=400 align="left"><tr><td>
+<%
+String delimit="@";
+String s1=request.getParameter("abc");
+String[] temp;
+temp=s1.split(delimit);
+Data dt=new Data();
+dt.name=temp[0];
+dt.status=temp[1];
+request.setAttribute("data",dt);
+%>
+<form method="post" action="Control">
+<input type="hidden" name="req" value="updatecandidate4"/>
+<input type="hidden" name="name" value="<%=temp[0] %>"/>
+
+<center>
+<table border=1 width=500><tr><td>CANDIDATE</td><td>STATUS</td></tr>
+<tr><td><%=temp[0]%></td><td><%=temp[1]%></td></tr></table>
+<h3>select the new status to be updated</h3>
+<select name="status">
+<option value="pending">pending</option>
+<option value="approve">approve</option>
+<option value="rejected">rejected</option>
+</select>
+<input type="submit" value="update"></input>
+</form>
+</td></tr></table>
+</td></tr><tr><td>
+<%@ include file="footer.jsp" %>
+</td></tr></table>
+</body>
+</html>

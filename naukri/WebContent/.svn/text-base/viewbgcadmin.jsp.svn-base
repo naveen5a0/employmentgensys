@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.ArrayList" %>
+	<%@ page import="pack1.cnt.BGC" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>View BGC Admin</title>
+<link rel="stylesheet" type="text/css" href="external.css">
+</head>
+<body class="patter1">
+<%@ include file="protected.jsp" %>
+<table width=100% height=100%>
+<tr><td>
+<%@ include file="header.jsp" %>
+</td></tr><tr><td>
+<%@ include file="menu.jsp" %>
+</td></tr><tr><td>
+<table border="0" width=100% height=400><tr><td>
+<form method="post" action="home.jsp">
+<input type="hidden" name="req" value="viewbgcadmin"/>
+
+<%BGC bg=new BGC();
+ArrayList<BGC> arl=new ArrayList<BGC>();
+arl=null;
+arl=(ArrayList)request.getAttribute("abc");
+%>
+<center>
+<table border=1><tr><td>ADMIN</td><td>STARTING DATE</td><td>ENDING DATE</td></tr>
+<%
+if(arl!=null)
+{
+	for(int i=0;i<arl.size();i++)
+	{
+	bg=(BGC)arl.get(i);
+%>
+
+<h3><tr><td><%=bg.admin%> </td><td><%=bg.stdate %> </td><td><%=bg.enddate %> </td></tr><%}}%></table></h2>
+</form>
+</td></tr></table>
+</td></tr><tr><td>
+<%@ include file="footer.jsp" %>
+</td></tr></table>
+</body>
+</html>

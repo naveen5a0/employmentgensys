@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>Employee Details</title>
+</head>
+<body>
+<h1 align="center" >  Employee  Details</h1>
+<a href="AddEmployee.jsp">
+<h4 align="center" >Add Employee Details</h4></a>
+<a href="ViewEmployee.jsp">
+<h4 align="center" >View Employee Details</h4></a>
+<a href="EditEmployee.jsp">
+<h4 align="center" >Edit Employee CTC and Designation</h4></a>
+
+
+
+
+
+</body>
+</html>

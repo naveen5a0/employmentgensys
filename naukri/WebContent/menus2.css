@@ -1,0 +1,299 @@
+body {
+	margin-top: 0px;
+}
+.Menu { 
+	background-image:url('http://www.bigresource.com/images/show.jpg');
+	text-decoration:none;
+	display:block;
+	width: 110px;
+	text-align:center;
+	background-repeat:no-repeat;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #000000;
+	font-weight:bold;
+	float:left;
+	margin-right:2px; padding-left:0; padding-right:0; padding-top:7px; padding-bottom:7px
+}
+.Menu:hover {
+	background-image:url('http://www.bigresource.com/images/over.jpg');
+	text-decoration: none;
+	color:#000000
+}
+.Menu2 { 
+	background-image:url('http://www.bigresource.com/images/still.jpg');
+	text-decoration:none;
+	display:block;
+	width: 110px;
+	text-align:center;
+	background-repeat:no-repeat;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight:bold;
+	float:left;
+	margin-right:2px; padding-left:0; padding-right:0; padding-top:7px; padding-bottom:7px
+}
+.Menu2:hover {
+	background-image:url('http://www.bigresource.com/images/still.jpg');
+	text-decoration: none;
+	color:#FFFFFF
+}
+
+.directory {
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #666;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.navbutton{
+	width: 200px;
+	background-image:url('http://www.bigresource.com/images/buto.jpg');
+	border: 1px solid #356aa0;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000000;
+	font-weight:bold; padding-left:8px; padding-right:8px; padding-top:5px; padding-bottom:5px;
+	text-decoration:none;
+}
+
+.related{
+	font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color:#356AA0; text-decoration:none;
+}
+
+.trelated {
+font-family:Verdana, Arial, Helvetica, sans-serif; font-weight:bold; font-size:14px; color:#356AA0; line-height:200%; text-decoration:none;
+}
+
+a.related:link {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color:#356AA0; text-decoration:none;}
+a.related:visited {color: purple; text-decoration: none; }
+a.related:hover {color: #003366; text-decoration: underline; }
+a.related:active {color: #003366; } 
+
+.headlink{
+	font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:#356AA0; text-decoration:none;
+}
+
+a.headlink:link {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color:#356AA0; text-decoration:none;}
+a.headlink:visited {color: purple; text-decoration: none; }
+a.headlink:hover {color: #003366; text-decoration: underline; }
+a.headlink:active {color: #003366; } 
+
+
+.relcont{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#666;
+	text-decoration:none;
+	word-wrap: break-word;
+}
+
+li {
+margin-bottom: 5px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+a:text-decoration: none;
+}
+
+li a {
+text-decoration: none;
+}
+
+li a:hover {
+text-decoration:underline;
+}
+
+
+h1 {
+	font-size: 15px;
+	font-family: Verdana, Arial;
+	color: #333333;/*themecolour5%0;*/
+	margin-top: 0px;
+	margin-bottom: -10px;
+}
+
+h2 {
+	font-size: 14px;
+	font-family: Verdana, Arial;
+	font-weight:normal;
+	color: #333;/*themecolour1;*/
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+h3 {
+	font-size: 12px;
+	font-family: Verdana, Arial;
+	font-weight:normal;
+	color: #000;/*themecolour1;*/
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+hr {
+	border: 0px none;
+	color: #EAEAEA;
+	height: 0.5px
+}
+
+.footer{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+
+}
+
+.mapheading {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #525252;
+}
+
+.mapfixed {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #525252;
+}
+
+.mapcontent {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #525252;
+}
+
+#google {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #525252;
+}
+
+.search_result a:link {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color:#356AA0; text-decoration:none;}
+.search_result a:visited {color: purple; text-decoration: none; }
+.search_result a:hover {color: #003366; text-decoration: underline; }
+.search_result a:active {color: #003366; } 
+
+
+a.menu_link:link {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color:#fff; text-decoration:none;}
+a.menu_link:hover {color: #fff; text-decoration: underline; }
+a.menu_link:visited {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; color: #fff; text-decoration: none; }
+
+.td_normal {
+	padding: 10px;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #666;
+	font-weight:bold;
+	text-decoration:none;
+}
+.td_small {
+	padding: 10px;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #666;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+.link_small {
+	font-family: Verdana, Arial;
+	font-size: 10px;
+	color: #356AA0;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+.text {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #525252;
+}
+
+/************** Form Elements ***********************/
+
+fieldset
+{
+border: 1px solid #781351;
+width: 20em
+}
+
+legend
+{
+color: #fff;
+background: #ffa20c;
+border: 1px solid #781351;
+padding: 2px 6px
+}
+
+input { 
+width: 250px;
+font-family: Verdana, Arial;
+font-size: 12px; 
+}
+
+select { 
+font-family: Verdana, Arial;
+font-size: 12px;
+}
+
+textarea { 
+font-family: Verdana, Arial;
+font-size: 12px; 
+}
+
+
+input.submit{
+	width: 125px;
+	background-image:url('http://www.bigresource.com/images/buto.jpg');
+	border: 1px solid #356aa0;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000000;
+	font-weight:bold; padding-left:5px; padding-right:5px; padding-top:2px; padding-bottom:2px
+
+}
+
+/************** Form Elements ***********************/
+
+/* Advanced Search */
+.as {
+font-family: Verdana, Arial;
+font-size: 12px;
+font-weight: bold;
+}
+
+/************** Scrolling Message ******************/
+.drag{position:relative;cursor:hand
+}
+#scontentmain{
+position:absolute;
+width:200px;
+}
+#scontentsub{
+position:absolute;
+width:90%;
+top:15;
+background-color:#356AA0;
+border:3px solid #9CC0E0;
+padding:1.5px;
+}
+.scrollbutton
+{
+   font-size:12px;
+   font-family:Verdana,sans-serif;
+   font-weight:bold;
+   background-color:#9CC0E0;
+   border-style:none;
+}
+
+/*************** Highlighting ***********************/
+.searchword 
+{
+background-color: yellow;
+}

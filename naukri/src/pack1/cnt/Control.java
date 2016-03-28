@@ -1,0 +1,296 @@
+package pack1.cnt;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import pack1.dto.AddEmployee;
+import pack1.dto.EditEmployee;
+import pack1.dto.ViewEmployee;
+
+import pack1.dto.ViewBGC;
+/**
+ * Servlet implementation class Control
+ */
+public class Control extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public Control() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getParameter("req").equals("asdf"))
+		{
+			System.out.println("one");
+			//if(request.getParameter("pwd").equals("abcxyz"))
+			//{
+				//System.out.println("two");
+				//RequestDispatcher rd=request.getRequestDispatcher("logindefault.jsp");
+				//rd.include(request,response);
+				//String s=(String)request.getAttribute("naveen");
+				//System.out.println(s);
+				
+			//}
+				RequestDispatcher rd=request.getRequestDispatcher("Loginserv");
+				rd.include(request,response);
+				String s=(String)request.getAttribute("naveen");
+				System.out.println(s);
+				if(s.equals("valid"))
+				{
+					rd=request.getRequestDispatcher("home.jsp");
+					rd.include(request,response);
+				}
+				else if(s.equals("def"))
+				{
+					rd=request.getRequestDispatcher("logindefault.jsp");
+					rd.include(request,response);	
+									}
+				else 
+				{
+					rd=request.getRequestDispatcher("login.jsp");
+					request.setAttribute("abc","try again");
+					rd.forward(request,response);
+				}
+		}
+		else if(request.getParameter("req").equals("selectbgcadmin"))
+		{
+			System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+			RequestDispatcher rd=request.getRequestDispatcher("SelectBGCAdmin");
+			rd.include(request,response);
+			rd=request.getRequestDispatcher("home.jsp");
+			rd.forward(request,response);
+			//String s=(String)request.getAttribute("naveen");
+			//System.out.println(s);
+		}
+		else if(request.getParameter("req").equals("addbgcadmin"))
+		{
+			System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiii add bgc admins"+request.getParameter("abc"));
+			RequestDispatcher rd=request.getRequestDispatcher("AddBGCAdminHandler");
+			rd.include(request,response);
+			rd=request.getRequestDispatcher("redirect.jsp");
+			rd.forward(request,response);
+			//String s=(String)request.getAttribute("naveen");
+			//System.out.println(s);
+		}
+		else if(request.getParameter("req").equals("logout"))
+		{
+			System.out.println("logg");
+			HttpSession ses=request.getSession(false);
+			ses.setAttribute("status","no");
+			RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+			rd.forward(request,response);
+		}
+		else if(request.getParameter("req").equals("viewbgc"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii");
+			ArrayList<BGC> arl=new ArrayList<BGC>();
+			RequestDispatcher rd=request.getRequestDispatcher("ViewBGCAdmin");
+			rd.include(request,response);
+			arl=(ArrayList)request.getAttribute("abc");
+			//String s=(String)request.getAttribute("naveen");
+			BGC bg=new BGC();
+			//for(int i=0;i<3;i++)
+			//{
+			//bg=(BGC)arl.get(4);
+			//System.out.println("kl"+bg.admin+bg.stdate+bg.enddate);
+			//}
+			//BGC bgc=(BGC)arl.get(1);
+			
+			//System.out.println(bgc.admin+bgc.stdate+bgc.enddate);
+			rd=request.getRequestDispatcher("viewbgcadmin.jsp");
+			rd.include(request,response);
+		}
+		else if(request.getParameter("req").equals("selectdate"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii sle"+request.getParameter("stdate"));
+			ArrayList<BGC> arl=new ArrayList<BGC>();
+			RequestDispatcher rd=request.getRequestDispatcher("ViewBGCAdminbydate");
+			rd.include(request,response);
+			arl=(ArrayList)request.getAttribute("abc");
+			//String s=(String)request.getAttribute("naveen");
+			BGC bg=new BGC();
+			//for(int i=0;i<3;i++)
+			//{
+			//bg=(BGC)arl.get(4);
+			//System.out.println("kl"+bg.admin+bg.stdate+bg.enddate);
+			//}
+			//BGC bgc=(BGC)arl.get(1);
+			
+			//System.out.println(bgc.admin+bgc.stdate+bgc.enddate);
+			rd=request.getRequestDispatcher("viewbgcadmin.jsp");
+			rd.include(request,response);
+		}
+		else if(request.getParameter("req").equals("viewbgcadmin"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii in view");
+			System.out.println("hiiiiiiiiiiiiiii in approve");
+			ArrayList<Candi> arl=new ArrayList<Candi>();
+			RequestDispatcher rd=request.getRequestDispatcher("ViewBGCAdminHandler");
+			rd.include(request,response);
+			System.out.println("hiiiiiiiiiiiiiii in approve control 2nd time");
+			arl=(ArrayList)request.getAttribute("abc");
+			rd=request.getRequestDispatcher("viewbgcadmindet.jsp");
+			rd.include(request,response);
+		}
+		
+		else if(request.getParameter("req").equals("logindefault"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii logindefault"+request.getParameter("username"));
+			RequestDispatcher rd=request.getRequestDispatcher("Logindefault");
+			rd.include(request,response);
+			rd=request.getRequestDispatcher("login.jsp");
+			rd.include(request,response);
+		}
+		else if(request.getParameter("req").equals("updatecandidate"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii in update control");
+			ArrayList<Candi> arl=new ArrayList<Candi>();
+			RequestDispatcher rd=request.getRequestDispatcher("Updatecandidate");
+			rd.include(request,response);
+			System.out.println("hiiiiiiiiiiiiiii in update control 2nd time");
+			arl=(ArrayList)request.getAttribute("abc");
+			rd=request.getRequestDispatcher("updatecandidate.jsp");
+			rd.include(request,response);
+		}
+		else if(request.getParameter("req").equals("approvebgcadmin"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii in approve");
+			ArrayList<Candi> arl=new ArrayList<Candi>();
+			RequestDispatcher rd=request.getRequestDispatcher("ApproveBGCAdminHandler");
+			rd.include(request,response);
+			System.out.println("hiiiiiiiiiiiiiii in approve control 2nd time");
+			arl=(ArrayList)request.getAttribute("abc");
+			rd=request.getRequestDispatcher("approvebgcadmin.jsp");
+			rd.include(request,response);
+		}
+		else if(request.getParameter("req").equals("approvebgcadmin2"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii in approve"+request.getParameter("abc"));
+			RequestDispatcher rd=request.getRequestDispatcher("ApproveBGCAdminHandler2");
+			rd.include(request,response);
+			rd=request.getRequestDispatcher("redirect.jsp");
+			rd.forward(request,response);
+			
+		}
+		else if(request.getParameter("req").equals("updatecandidate4"))
+		{
+			System.out.println("hiiiiiiiiiiiiiii in update control 244422");
+			
+			System.out.println("hiiiiiiiiiiiiiii in update control 244422"+request.getParameter("name")+request.getParameter("status"));
+			
+			RequestDispatcher rd=request.getRequestDispatcher("Updatecandidate2");
+			rd.include(request,response);
+			rd=request.getRequestDispatcher("redirect.jsp");
+			rd.forward(request,response);
+			
+		}
+		else if(request.getParameter("req").equals("AddEmployee"))
+		{
+			System.out.println("entered add emp");
+			int UnitHeadID= Integer.parseInt(request.getParameter("UnitHeadID"));
+			int ProjectID= Integer.parseInt(request.getParameter("ProjectID"));
+			float CTC=Float.parseFloat(request.getParameter("CTC"));
+			
+			String EmployeeName=request.getParameter("EmployeeName");
+			String Gender=request.getParameter("Gender");
+			String Division=request.getParameter("Division");
+			String Designation=request.getParameter("Designation");
+			//String IsHR=request.getParameter("IsHR");
+			String IsNEW=request.getParameter("IsNEW");
+			String DOB=request.getParameter("DOB");
+			String DOJ=request.getParameter("DOJ");
+			//System.out.println("controller"+IsHR);
+				
+			
+			
+			EmployeePojo lp= new EmployeePojo();
+			
+			lp.setUnitHeadID(UnitHeadID);
+			lp.setProjectID(ProjectID);
+			lp.setCTC(CTC);
+			lp.setEmployeeName(EmployeeName);
+			lp.setGender(Gender);
+			lp.setDivision(Division);
+			lp.setDesignation(Designation);
+			//lp.setIsHR(IsHR);
+			lp.setIsNEW(IsNEW);
+			lp.setDOB(DOB);
+			lp.setDOJ(DOJ);
+			System.out.println("hiiiiiiiiiiiiiii add emp");
+			AddEmployee dt=new AddEmployee();
+			try {
+				dt.insertData(lp);
+			} catch (SQLException e) {
+				e.printStackTrace();}
+			RequestDispatcher rd=request.getRequestDispatcher("redirect.jsp");
+			rd.forward(request,response);
+		}
+		if(request.getParameter("req").equals("ViewEmployee"))
+		{
+			ViewEmployee dv=new ViewEmployee();	
+			try {
+				dv.ViewData();
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+			ResultSet rs=ViewEmployee.rs;
+			//PrintWriter out=response.getWriter();
+			//response.setContentType("text/html");   
+		
+			//out.println("<center><h2>New Employee Details</h2><center>");
+			//out.println("<table border=1 cellpadding=0 cellspacing=0 align=center>");
+					
+			
+		      try {
+      	//out.println("<tr>");
+			ResultSetMetaData rsmd = rs.getMetaData();
+			request.setAttribute("meta",rsmd);
+			request.setAttribute("data",rs);
+			RequestDispatcher rd=request.getRequestDispatcher("ViewEmployee.jsp");
+			rd.include(request,response);
+			
+		      }
+					catch(Exception e)		
+					{
+						System.out.println(e);
+					}
+					
+		}
+		else if(request.getParameter("req").equals("EditEmployee"))
+		{
+		int EmployeeID=Integer.parseInt(request.getParameter("EmployeeID"))	;
+		float CTC=Float.parseFloat(request.getParameter("CTC"));
+		String Designation=request.getParameter("Designation");
+		EditEmployeePojo lp= new EditEmployeePojo();
+		lp.setEmployeeID(EmployeeID);
+	
+		lp.setCTC(CTC);
+		lp.setDesignation(Designation);
+		EditEmployee dt=new EditEmployee();
+		try {
+			dt.editData(lp);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher rd=request.getRequestDispatcher("redirect.jsp");
+		rd.forward(request,response);
+		}
+	}
+}

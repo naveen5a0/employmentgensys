@@ -1,0 +1,20 @@
+
+<table border="0" width=100% height=100% align=left>
+<tr>
+<td><img src="logo.JPG" height=100 width=100></td><td><h1 class="red">E-Recruitment</h1><h2 valign="bottom" class="clr">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspa platform for your future</td>
+<td><h2><center>welcome<%HttpSession ses=request.getSession(false);%>
+<%=(String)ses.getAttribute("username") %></td>
+<td>
+<form name="submitForm10" method="post" action="Control">
+    <input type="hidden" name="req" value="logout">
+    <A HREF="javascript:document.submitForm10.submit()"><center>Logout</A>
+</form>
+</td>
+</tr>
+
+
+</table>
+<hr color="#008FB2"></hr>
+
+
+

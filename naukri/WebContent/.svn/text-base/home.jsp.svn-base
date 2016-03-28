@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Home page</title>
+<link rel="stylesheet" type="text/css" href="external.css">
+
+</head>
+<%@ include file="protected.jsp" %>
+<body class="patter1">
+<table width=100% height=100%>
+<tr><td>
+<%@ include file="header.jsp" %>
+
+</td></tr><tr><td>
+<%@ include file="menu.jsp" %>
+</td></tr><tr><td>
+<table border="0" width=100% height=400><tr><td>
+<center><h2>welcome to home page</h2></center>
+</td></tr></table>
+</td></tr><tr><td>
+<%@ include file="footer.jsp" %>
+</td></tr></table>
+</body>
+</html>

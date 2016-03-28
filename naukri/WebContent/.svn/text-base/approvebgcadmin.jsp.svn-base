@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.ArrayList" %>
+	<%@ page import="pack1.cnt.BGCAdmin;" %>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="external.css">
+<script>
+function validate() 
+{
+	var radios = document.getElementsByName('abc');
+
+    for (var i = 0; i < radios.length; i++) 
+	{
+        if (radios[i].checked) {	        
+        return true; // checked
+    	}
+    }   
+alert("please select radio button");
+return false;
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Approve BGC Admin</title>
+</head>
+<body class="patter1">
+<%@ include file="protected.jsp" %>
+<table width=100% height=100%>
+<tr><td>
+<%@ include file="header.jsp" %>
+</td></tr><tr><td>
+<%@ include file="menu.jsp" %>
+</td></tr><tr><td>
+<table border="0" width=100% height=400><tr><td>
+<form method="post" action="Control" onSubmit="return validate()">
+<input type="hidden" name="req" value="approvebgcadmin2"/>
+
+<%BGCAdmin cd=new BGCAdmin();
+ArrayList<BGCAdmin> arl=new ArrayList<BGCAdmin>();
+arl=null;
+arl=(ArrayList)request.getAttribute("abc");
+%>
+<center>
+<table border=1><tr><td>admin id</td><td>status</td><td>time</td><td>emp id</td><td>select</td></tr>
+<%
+if(arl!=null)
+{
+	for(int i=0;i<arl.size();i++)
+	{
+	cd=(BGCAdmin)arl.get(i);
+%>
+
+<h3><tr><td><%=cd.getAdminid() %></<td><td><%=cd.getStatus() %></<td><td><%=cd.getChangetim() %></td><td><%=cd.getEmpid()%></td><td><input type="radio" name="abc" value="<%=cd.getAdminid()%>"> </td></tr><%}}%></table></h2>
+<input type="submit" value="update"></input>
+</form>
+</td></tr></table>
+</td></tr><tr><td>
+<%@ include file="footer.jsp" %>
+</td></tr></table>
+</body>
+</html>

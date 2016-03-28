@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.sql.Connection"%>
+    <%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+
+<html>
+<head>
+<meta charset="utf-8" />
+    <title>Select BGC Admin</title>
+    <link rel="stylesheet" href="abc.css" />
+    <link rel="stylesheet" type="text/css" href="external.css">
+    <script src="abc.js"></script>
+    <script src="abcd.js"></script>
+    <%--<script src="sample-registration-form-validation.js"></script>--%>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+        $( "#datepicker2" ).datepicker();
+    });
+    function formValidation()
+    {
+    	if((document.getElementById("selemp").value)=="select")
+    			{
+    		 alert("please select admin");
+             return false;
+    			}
+    	else if(((document.getElementById("stdate").value).length==0)||((document.getElementById("enddate").value).length==0))
+    {
+    	 alert("please select the date");
+         return false;
+    }
+         else
+    	 return true;
+    };
+    </script>
+    <%
+String url="jdbc:oracle:thin:@172.25.192.71:1521:javadb";
+String usr="H46ORAUSER8D";
+String pwd="tcshyd";
+Connection con = null;
+Statement st = null;
+ResultSet rs= null;
+try
+{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+System.out.println("Driver registered getcon");
+con= DriverManager.getConnection(url,usr,pwd);
+st=con.createStatement();
+System.out.println("hi in addbgc dto");
+rs=st.executeQuery("select a_id from bgcadmin where status=1");
+
+}
+catch(Exception e){}
+%>
+    
+ </head>
+ <%@ include file="protected.jsp" %>
+<body class="patter1">
+<table width=100% height=100%>
+<tr><td>
+<%@ include file="header.jsp" %>
+</td></tr><tr><td>
+<%@ include file="menu.jsp" %>
+</td></tr><tr><td>
+<center>
+<table border="0" width=1200 height=400><tr><td>
+
+<form method="post" action="Control" onSubmit="return formValidation();">
+<center>select emp id<select name="selemp">
+<option value="select">select</option>
+<%while(rs.next()){%>
+<option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+<%} %>
+</select><br><br>
+<center>starting date <input type="text" name="stdate" id="datepicker"></input><br><br>
+<center>closing date <input type="text" name="enddate" id="datepicker2"></input><br><br>
+<input type="hidden" name="req" value="selectbgcadmin"/>
+<center><input type="submit" value="Submit"></input>
+</form>
+</center>
+</td></tr></table>
+</td></tr><tr><td>
+<%@ include file="footer.jsp" %>
+</td></tr></table>
+</body>
+</html>

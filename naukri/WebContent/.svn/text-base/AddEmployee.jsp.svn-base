@@ -1,0 +1,211 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="abc.css" />
+		<link rel="stylesheet" type="text/css" href="external.css">
+    <script src="abc.js"></script>
+    <script src="abcd.js"></script>
+    <script language="javaScript" type="text/javascript" src="calendar.js"></script>
+   <link href="calendar.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript"> 
+		function validate()
+		{ 
+			var bool=true;
+			var numbers = /^[0-9]+$/;  
+			if((document.getElementById("EmployeeName").value).length==0)
+		    {
+		    	alert("enter employee name"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("Gender").value)=="select")
+		    {
+		    	alert("please select gender"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("DOB").value).length==0)
+		    {
+		    	alert("please select Date Of Birth"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("DOJ").value).length==0)
+		    {
+		    	alert("please select Date Of Joining"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("Division").value)=="select")
+		    {
+		    	alert("please select division"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("CTC").value).length==0)
+		    {
+		    	alert("enter CTC"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("CTC").value).match(numbers))
+		    {
+		    	alert("enter CTC"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("Designation").value)=="select")
+		    {
+		    	alert("please select designation"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("UnitHeadID").value).length==0)
+		    {
+		    	alert("enter unit head id"); 
+		         bool=false;
+		    }
+			else if((document.getElementById("ProjectID").value).length==0)
+		    {
+		    	alert("enter project id"); 
+		         bool=false;
+		    }
+		    return bool;   
+		}
+		$(function() {
+	        $( "#datepicker" ).datepicker();
+	        $( "#datepicker2" ).datepicker();
+	    });
+		</script> 
+</head>
+<body class="patter1">
+<%@ include file="protected.jsp" %>
+<%@ include file="header.jsp" %>
+<%@ include file="menu.jsp" %>
+
+<form method="post" action="Control" onSubmit="return validate();">
+	<input type="hidden" name="req" value="AddEmployee" ></input>
+	<br/> <br/>
+	
+	<table align="center" width=100% >
+	  
+          <tr> <td> EmployeeName:</td> <td> <input type="text" name="EmployeeName" /> </td> </tr>         <tr> </tr>  
+		                                                 	
+	 			
+					
+		 <tr> <td> Gender:  </td>  <td> <select name="Gender" >
+			<option value="select"> Choose </option>
+			<option value="Male"> Male </option>
+			<option value="Female"> Female </option>
+			</select></td></tr>
+
+
+<tr><td>Date Of Birth</td><td> <input type="text" name="DOB"><a href="#" onClick="setYears(1947, 2020);
+       showCalender(this, 'DOB');">
+      <img src="calender.png"></a></td></tr>
+<tr><td>Date Of Joining</td><td><input type="text" name="DOJ"><a href="#" onClick="setYears(1947, 2020);
+       showCalender(this, 'DOJ');">
+      <img src="calender.png"></a>	</td></tr>
+	<tr></tr>	
+ 
+	         <tr> <td>Division: </td>  <td> <select name="Division">
+			<option value="select"> Select Division </option>
+			<option value="IT Services"> IT Services </option>
+			<option value="IS"> IS </option>
+			<option value="Marketing"> Marketing </option>
+			<option value="Banking"> Banking </option>
+			<option value="Insurance"> Insurance </option>
+			<option value="Telcom"> Telcom </option>
+			<option value="BPO Services"> BPO Services </option>
+			</select>  </td> </tr>	
+
+	<tr> </tr>
+
+			
+ 		<tr> <td> CTC:</td> <td> <input type="text" name="CTC" /> </td> </tr> 
+
+
+	<tr></tr>
+
+
+ 		<tr> <td>Designation: </td>  <td> <select name="Designation">
+			<option value="select"> Choose </option>
+			<option value="IT Analyst"> IT Analyst </option>
+			
+			<option value="HR Manager"> HR Manager </option>
+			<option value="Unit Head"> Unit Head </option>
+			<option value="BGC Administrator"> BGC Administrator </option>
+			</select>  </td> </tr>	 
+	
+	<tr></tr>	
+
+		 <tr> <td> UnitHeadID:</td> <td> <input type="text" name="UnitHeadID" /> </td> </tr>
+
+	 <tr></tr>
+
+
+		<tr> <td> ProjectID:</td> <td> <input type="text" name="ProjectID" /> </td> </tr> 
+
+
+	<tr></tr>
+
+		<tr><td> Is HR? </td> <td>
+  			 <input type="radio" name="IsHR" value="yes" checked/>  yes
+  	 		<input type="radio" name="IsHR" value="no"/> no</td></tr>
+
+	<tr></tr>
+
+		<tr><td> Is NEW?</td> <td>
+  			<input type="radio" name="IsNEW" value="yes" checked/> yes
+  	 		<input type="radio" name="IsNEW" value="no"/> no</td></tr>
+
+</table> <br/> <br/>
+		<center> <input type="submit" value="Submit" /> 
+			<input type="reset" value="Reset"/>  </center>	<br/> 
+	
+	</form>
+</table>
+  <!-- Calender Script  --> 
+
+    <table id="calenderTable">
+        <tbody id="calenderTableHead">
+          <tr>
+            <td colspan="4" align="center">
+	          <select 
+
+onChange="showCalenderBody(createCalender(document.getElementById('selectYear').value,
+	           this.selectedIndex, false));" id="selectMonth">
+	              <option value="0">Jan</option>
+	              <option value="1">Feb</option>
+	              <option value="2">Mar</option>
+	              <option value="3">Apr</option>
+	              <option value="4">May</option>
+	              <option value="5">Jun</option>
+	              <option value="6">Jul</option>
+	              <option value="7">Aug</option>
+	              <option value="8">Sep</option>
+	              <option value="9">Oct</option>
+	              <option value="10">Nov</option>
+	              <option value="11">Dec</option>
+	          </select>
+            </td>
+            <td colspan="2" align="center">
+			    <select onChange="showCalenderBody(createCalender(this.value, 
+				document.getElementById('selectMonth').selectedIndex, false));" 
+
+id="selectYear">
+				</select>
+			</td>
+            <td align="center">
+			    <a href="#" onClick="closeCalender();"><font color="#003333" 
+
+size="+1">X</font></a>
+			</td>
+		  </tr>
+       </tbody>
+       <tbody id="calenderTableDays">
+         <tr style="">
+           <td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thu</td><td>Fri</td><td>Sat</td>
+         </tr>
+       </tbody>
+       <tbody id="calender"></tbody>
+    </table>
+
+<!-- End Calender Script  -->
+ <%@ include file="footer.jsp" %>
+</body>
+</html>

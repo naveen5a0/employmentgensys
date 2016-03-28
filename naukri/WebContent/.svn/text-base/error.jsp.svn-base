@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Error</title>
+<link rel="stylesheet" type="text/css" href="external.css">
+<link type="text/css" rel="StyleSheet" href="menus.css" >
+<script type="text/javascript">
+
+</script>
+</head>
+<body class="patter1">
+<table height=100% width=100%>
+<tr><td>
+<center>
+<h2>invalid page </h2>
+<h3><a href="login.jsp">login page</a></h3>
+</td></tr>
+</table>
+</body>
+</html>

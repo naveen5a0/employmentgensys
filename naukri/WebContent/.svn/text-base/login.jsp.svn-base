@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Login page</title>
+<link rel="stylesheet" type="text/css" href="external.css">
+<script type="text/javascript">
+function formValidation()
+{
+if(((document.getElementById("username").value).length==0)||((document.getElementById("password").value).length==0))
+{
+	 alert("please enter username and password");
+     return false;
+}
+     else
+	 return true;
+};
+</script>
+</head>
+<body class="patter1">
+<table border="0" width=1200>
+<tr>
+<td><img src="logo.JPG" height=100 width=100></td><td><h1 class="red">E-Recruitment</h3><h2 valign="bottom" class="clr">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspa platform for your future</td>
+</tr>
+</table>
+<hr color="#008FB2">
+<table border="0" width=1200 height=400 align="center"><tr><td>
+<table border="1" height="180" align="center" bordercolor="#008FB2"><tr><td><img src="loginimage.gif"></img></td><td>
+<table border="0"><tr><td>
+<form method="post" action="Control" onSubmit="return formValidation();" >
+<br>username <input type="text" name="username"></input></td></tr><tr><td>
+<br>passsword <input type="password" name="pwd"></input></td></tr><tr><td>
+<input type="hidden" name="req" value="asdf"/>
+<br><center><input type="submit" value="Login"></input>
+<input type="reset" value="Reset"></input>
+</form></td></tr></table>
+</td></tr></table>
+<%String s=(String)request.getAttribute("abc"); %>
+<%if(s==null){}
+else
+{%>
+<p><center><h4 color="red">Invalid username or password..try again</p><%} %>
+</td></tr></table>
+<hr color="#008FB2">
+<table border="0" width=1200 height=30>
+<tr>
+<td><center><a href="login.jsp">Home</td><td><center>About us</td><td><center>Blog</td><td><center>Contact us</td><td><center>Feedback</td>
+</tr>
+</table>
+</body>
+</html>
